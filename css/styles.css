@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+.nav-links {
+    display:flex;
+    list-style-type: none;
+    gap: 40px;
+    justify-content: center;
+}
+
+a {
+  font-family: "Iosevka Charon", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+    font-weight: 700;
+    font-family: "Iosevka Charon", monospace;
+
+}
+h2 {
+    font-weight: 500;
+    font-family: "Iosevka Charon", monospace;
+}
+h3 {
+    font-weight: 400;
+    font-family: "Iosevka Charon", monospace;
+}
+h4 {
+    font-weight: 400;
+    font-family: "Iosevka Charon", monospace;
+}
+h5 {
+    font-weight: 300;
+    font-family: "Iosevka Charon", monospace;
+}
+h6 {
+    font-weight: 300;
+    font-family: "Iosevka Charon", monospace;
+}
+
+html, body {
+  cursor: none;
+}
+.custom-cursor {
+  width: 32px;
+  height: 32px;
+  background-image: url('../images/wtfoatmeal.jpg');
+  background-size: cover;
+  position: absolute;
+  pointer-events: none; 
+  z-index: 9999;
+}
