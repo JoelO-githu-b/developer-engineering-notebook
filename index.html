@@ -3,6 +3,8 @@
 
 <head>
     <script src="js/script.js" defer></script>
+    <script src="js/main-page-js.js" defer></script>
+
     <link rel="stylesheet" href="css/styles.css">
     <style>
         img {
@@ -12,30 +14,153 @@
         p {
             font-size: 18px;
         }
-        
+        body {
+            margin: 0;
+            padding: 0;
+            max-width: 100%;
+            max-height: 100%;
+            overflow-x: hidden;
+        }
+
+        /* 1. Banner Container */
+        .wavy-banner {
+            position: relative;
+            width: 100%;
+            height: 120px; /* Adjust height as needed */
+            background: #1E1E1E; /* Base banner background color */
+        }
+
+        /* 2. Content Layer */
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            top: 35px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            height: 70px; /* Keeps text above the wave */
+            color: white;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        /* 3. The Looping Wave Layer */
+        .wave-wrapper {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200%; /* Must be at least 200% for a seamless loop */
+            height: 50px; /* Height of the wave animation */
+            /* Seamless SVG wave code embedded as background */
+            background-image: url('images/banner.png');
+            
+            background-repeat: repeat-x;
+            background-size: 50% 100%; /* Matches the 200% width wrapper */
+            animation: move-wave 10s linear infinite;
+        }
+        /* 3. The Looping Wave Layer */
+        .wave-wrapper-2 {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200%; /* Must be at least 200% for a seamless loop */
+            height: 54px; /* Height of the wave animation */
+            /* Seamless SVG wave code embedded as background */
+            background-image: url('images/white_banner.png');
+            
+            background-repeat: repeat-x;
+            background-size: 50% 100%; /* Matches the 200% width wrapper */
+            animation: move-wave 10s linear infinite;
+        }
+
+        /* Container holding the parallax area */
+        .parallax-container {
+            z-index: -1;
+            width: 100%;
+            height: 600px;
+        }
+
+        /* The actual background image layer */
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 130%; /* Make it taller so it doesn't leave gaps when moving */
+            background-image: url('images/howlingturnpikeblur.png');
+            background-size: cover;
+            background-position: center;
+            will-change: transform; /* Optimizes browser rendering speed */
+        }
+
+        /* Foreground content text layer */
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* 4. Infinite Loop Animation */
+        @keyframes move-wave {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%); /* Moves exactly one full pattern width */
+        }
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="custom-cursor"></div>
-
-    <h1>Welcome to Joel's Homepage</h1>
-    <h4>ITS UNDER CONSTRUCTION AHHHH AHHHH DONT LOOK!!!!!!!!!! ITS NAKED!!!!!!!</h6>
-    
-    <div class="oatmeal">
-        <img src="images/wtfoatmeal.jpg" alt="A pondorous image about the meaning of life and the universe." width="500" height="600">
+    <div class="parallax-container">
+        <div class="parallax-bg" id="parallaxImage"></div>
+        <div class="parallax-content">
+            <div class="wavy-banner">
+                <div class="banner-content">
+                    <div>
+                        <h1>Welcome to Joel's Homepage</h1>
+                        <h4>ITS UNDER CONSTRUCTION AHHHH AHHHH DONT LOOK!!!!!!!!!! ITS NAKED!!!!!!!</h6>
+                    </div>
+                </div>
+                <div class="wave-wrapper-2"></div>
+                <div class="wave-wrapper"></div>
+            </div>
+            
+        </div>
     </div>
     
+    <div class="expand-frame-1">
+        <h1>Hello</h1>
+    </div>
+    <div class="custom-cursor"></div>
 
-    <nav>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="journal.html">Weekly Journal</a></li>
-            <li><a href="ai-log.html">AI Engineering Log</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">About Me</a></li>
-        </ul>
-    </nav>
+    
+    
+    <div class="oatmeal">
+        <img src="images/wtfoatmeal.jpg">
+    </div>
+
+    <div>
+        <nav>
+            <div class="nav-link-container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="journal.html">Weekly Journal</a></li>
+                    <li><a href="ai-log.html">AI Engineering Log</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                 </ul>
+            </div>
+            
+        </nav>
+    </div>
+   
     
 </body>
 
