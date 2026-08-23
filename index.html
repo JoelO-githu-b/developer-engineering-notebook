@@ -116,12 +116,16 @@
             margin: 20px;
             width: 0px;
             height: 100px;
+            flex-shrink: 0; /* Stops Flexbox from squishing it */
+            flex-grow: 0;   /* Stops Flexbox from stretching it */
             transition: width 0.1s ease, height 0.1s ease;
         }
         .container {
             display: flex;
+            justify-content: flex-end;
             align-items: center; /* optional vertical centering */
             gap: 16px; /* space between elements */
+            
         }
 
         .text-content {
@@ -133,6 +137,8 @@
             flex: 0 0 auto; /* stops the image from shrinking or growing */
             width: 150px; /* set your desired fixed width */
             height: auto;
+            transition: rotate 0.1s ease;
+
         }
 
         /* 4. Infinite Loop Animation */
@@ -173,21 +179,27 @@
                 
                 <div class="container">
                     <div class="text-content">
-                        <div class = "expand-container" id = "container-1" style = "width: 95%">
-                          <h3>Hello World</h3>
+                        <div class = "expand-container" id = "container-1" style = "width: 70%">
+                          <h3>Hello! This is my webpage I've made for my Software Development class at Fishers High School.</h3>
                         </div>
                     </div>
                     
-                    <img src="images/pleadful.png" alt="Example" class="fixed-image">
+                    <img src="images/pleadful.png" alt="Example" class="fixed-image" id = "pleadful", style = "transform: translateX(-45px)">
                 </div>
 
 
                 <div style="margin-bottom: 420px;"></div>
 
-                <div class = "expand-container" id = "container-2" style = "margin-left: auto; width: 0%;">
-                    <h3>Hello World</h3>
-
+                <div class="container">
+                    <img src="images/pleadful.png" alt="Example" class="fixed-image" id = "pleadful-2", style = "transform: translateX(-345px)">
+                    <div class="text-content">
+                        <div class = "expand-container" id = "container-2" style = "margin-left: auto; width: 0%;">
+                          <h3>This website is where I will document various projects pertaining to this class, and help supplement my skill in using AI effectively + learning HTML/CSS/JS along the way.</h3>
+                        </div>
+                    </div>
+                    
                 </div>
+
                 
                 <div class="custom-cursor"></div>
 

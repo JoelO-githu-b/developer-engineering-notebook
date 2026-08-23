@@ -1,6 +1,8 @@
 const parallax = document.getElementById("parallaxImage");
 const expandContainer = document.getElementById("container-1");
 const expandContainer2 = document.getElementById("container-2");
+const pleadful = document.getElementById("pleadful");
+const pleadful2 = document.getElementById("pleadful-2");
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
 document.addEventListener('scroll', function() {
@@ -18,8 +20,10 @@ document.addEventListener('scroll', function() {
     // 4. Calculate the new size (Base size of 100px + scroll amount)
 
     // 5. Apply the new size to the box
-    expandContainer.style.width = 0.1 * clamp(1100-scrollValue, 0, 700) + '%';
-    
-    expandContainer2.style.width = 0.1 * clamp(scrollValue-200, 0, 700) + '%';
+    expandContainer.style.width = 0.1 * clamp(900-scrollValue, 0, 700) + '%';
+    expandContainer2.style.width = 0.1 * clamp(scrollValue, 0, 700) + '%';
+
+    pleadful.style.transform = "rotate(" + (scrollValue * 0.04) + "deg) translateX(" + (-45 + scrollValue * 0.5) +"px)";
+    pleadful2.style.transform = "rotate(" + ((scrollValue * 0.04) - 24) + "deg) translateX(" + clamp((-245 + scrollValue * 0.5), -700, 45) +"px)";
 
 });

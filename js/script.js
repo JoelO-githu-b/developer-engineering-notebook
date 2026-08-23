@@ -12,9 +12,6 @@ let sizeLerpX = 0; let sizeLerpY = 0;
 let firstFrame = false
 
 function update(currentTime) {
-  if (!lastTime) {
-
-  }
   let deltaTime = (currentTime - lastTime) / 1000;
 
   lerpX = lerp(lerpX, pageX, deltaTime * 15.0);
