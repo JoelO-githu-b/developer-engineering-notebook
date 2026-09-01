@@ -27,3 +27,7 @@ document.addEventListener('scroll', function() {
     pleadful2.style.transform = "rotate(" + ((scrollValue * 0.04) - 24) + "deg) translateX(" + clamp((-245 + scrollValue * 0.5), -700, 45) +"px)";
 
 });
+function toggleDarkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
