@@ -17,13 +17,39 @@ button {
     background-color: #1E1E1E;
     border-radius: 12px;
     border: 4px solid white;
-    
 }
+.dark-light-switch {
+    background-color: #1E1E1E;
+    border-radius: 12px;
+    border: 4px solid white;
+    position: fixed; bottom: 15px; left: 15px;
+    background-image: url("../images/sun_icon.png"); 
+    width: 45px; height:45px; 
+    background-size: cover;
+}
+.dark-light-switch-alt {
+    position: fixed; bottom: 15px; left: 15px;
+    background-image: url("../images/moon_icon.png"); 
+    width: 45px; height:45px; 
+    background-size: cover;
+    
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    border: 4px solid #1E1E1E;
+}
+
 .nav-link-container {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1e1e1e;
+    position: fixed; bottom: 0; left: 0; width: 100%;
+}
+.nav-link-container-light {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
     position: fixed; bottom: 0; left: 0; width: 100%;
 }
 h1 {
@@ -71,4 +97,166 @@ html, body {
     justify-content: center;
     font-weight: 700;
     
+} 
+/* 3. The Looping Wave Layer */
+.wave-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200%; /* Must be at least 200% for a seamless loop */
+    height: 50px; /* Height of the wave animation */
+    /* Seamless SVG wave code embedded as background */
+    background-image: url('../images/banner.png');
+    
+    background-repeat: repeat-x;
+    background-size: 50% 100%; /* Matches the 200% width wrapper */
+    animation: move-wave 10s linear infinite;
+}
+/* 3. The Looping Wave Layer */
+.wave-wrapper-2 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200%; /* Must be at least 200% for a seamless loop */
+    height: 54px; /* Height of the wave animation */
+    /* Seamless SVG wave code embedded as background */
+    background-image: url('../images/white_banner.png');
+    
+    background-repeat: repeat-x;
+    background-size: 50% 100%; /* Matches the 200% width wrapper */
+    animation: move-wave 10s linear infinite;
+}
+
+/* 3. The Looping Wave Layer */
+.dark-wave-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200%;
+    height: 50px;
+     z-index: 2;
+    background-image: url('../images/white_banner.png');
+    background-repeat: repeat-x;
+    background-size: 50% 100%; /* Matches the 200% width wrapper */
+    animation: move-wave 10s linear infinite;
+}
+/* 3. The Looping Wave Layer */
+.dark-wave-wrapper-2 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200%;
+    height: 54px; 
+    z-index: 1;
+    background-image: url('../images/banner.png');
+    background-repeat: repeat-x;
+    background-size: 50% 100%; /* Matches the 200% width wrapper */
+    animation: move-wave 10s linear infinite;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 3;
+    top: 35px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 70px; /* Keeps text above the wave */
+    color: #FFFFFF;
+    background-color: #1E1E1E;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.banner-content-light {
+    position: relative;
+    z-index: 3;
+    top: 35px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 70px; /* Keeps text above the wave */
+    color: #1E1E1E;
+    background-color: #FFFFFF;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.wavy-banner {
+    position: relative;
+    width: 100%;
+    height: 120px; /* Adjust height as needed */
+    background: #1E1E1E; /* Base banner background color */
+}
+.wavy-banner-dark {
+    position: relative;
+    width: 100%;
+    height: 120px; /* Adjust height as needed */
+    background: #FFFFFF; /* Base banner background color */
+}
+
+
+
+/* The actual background image layer */
+.parallax-bg {
+    position: absolute;
+    z-index: index inherit;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180%; /* Make it taller so it doesn't leave gaps when moving */
+    background-image: url('../images/howlingturnpikeblur.png');
+    background-size: cover;
+    background-position: center;
+    will-change: transform; /* Optimizes browser rendering speed */
+}
+.light-parallax-bg {
+    position: absolute;
+    z-index: index inherit;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180%; /* Make it taller so it doesn't leave gaps when moving */
+    background-image: url('../images/blurred-venous-stasis-bg.png');
+    background-size: cover;
+    background-position: center;
+    will-change: transform; /* Optimizes browser rendering speed */
+}
+
+.expand-container {
+    background-color: #1E1E1E;
+    border-radius: 12px;
+    border: 4px solid white;
+    padding: 50px;
+    margin: 20px;
+    width: 0px;
+    height: 100px;
+    flex-shrink: 0; /* Stops Flexbox from squishing it */
+    flex-grow: 0;   /* Stops Flexbox from stretching it */
+    transition: width 0.1s ease, height 0.1s ease;
+}
+.light-expand-container {
+    background-image: linear-gradient(#f2fff9, #94dabd);
+    background-color: #94dabd;
+    border-radius: 12px;
+    border: 4px solid #1e1e1e;
+    color:#1E1E1E;
+    padding: 50px;
+    -webkit-text-stroke: 1.4px black;
+    margin: 20px;
+    width: 0px;
+    height: 100px;
+    flex-shrink: 0; /* Stops Flexbox from squishing it */
+    flex-grow: 0;   /* Stops Flexbox from stretching it */
+    transition: width 0.1s ease, height 0.1s ease;
+}
+/* 4. Infinite Loop Animation */
+@keyframes move-wave {
+0% {
+    transform: translateX(0);
+}
+100% {
+    transform: translateX(-50%); /* Moves exactly one full pattern width */
+}
 }

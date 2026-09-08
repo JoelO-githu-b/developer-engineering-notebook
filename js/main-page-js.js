@@ -1,9 +1,18 @@
 const parallax = document.getElementById("parallaxImage");
 const expandContainer = document.getElementById("container-1");
 const expandContainer2 = document.getElementById("container-2");
+const expandContainer3 = document.getElementById("container-3");
+const wave_wrapper = document.getElementById("wave-wrapper");
+const wave_wrapper2 = document.getElementById("wave-wrapper-2");
+const wavy_banner = document.getElementById("wavy-banner");
+const banner_content = document.getElementById("banner-content");
 const pleadful = document.getElementById("pleadful");
 const pleadful2 = document.getElementById("pleadful-2");
+const pleadful3 = document.getElementById("pleadful-3");
+const dark_light_switch = document.getElementById("dark-light-switch")
+const navlinkcontainer = document.getElementById("nav-link-container")
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+
 
 document.addEventListener('scroll', function() {
     let scrollPosition = window.pageYOffset;
@@ -19,15 +28,24 @@ document.addEventListener('scroll', function() {
 
     // 4. Calculate the new size (Base size of 100px + scroll amount)
 
-    // 5. Apply the new size to the box
-    expandContainer.style.width = 0.1 * clamp(900-scrollValue, 0, 700) + '%';
+    expandContainer.style.width = 0.1 * 700 + '%';
     expandContainer2.style.width = 0.1 * clamp(scrollValue, 0, 700) + '%';
+    expandContainer3.style.width = 0.1 * clamp(scrollValue - 700, 0, 700)  + '%';
 
     pleadful.style.transform = "rotate(" + (scrollValue * 0.04) + "deg) translateX(" + (-45 + scrollValue * 0.5) +"px)";
     pleadful2.style.transform = "rotate(" + ((scrollValue * 0.04) - 24) + "deg) translateX(" + clamp((-245 + scrollValue * 0.5), -700, 45) +"px)";
+    pleadful3.style.transform = "rotate(" + ((scrollValue * 0.04) - 42) + "deg) translateX(" + clamp((-490 + scrollValue * 0.5), -700, 45) +"px)";
 
 });
 function toggleDarkMode() {
-  var element = document.body;
-  element.classList.toggle("dark-mode");
+  parallax.classList.toggle("light-parallax-bg");
+  expandContainer.classList.toggle("light-expand-container");
+  expandContainer2.classList.toggle("light-expand-container");
+  navlinkcontainer.classList.toggle("nav-link-container-light");
+  
+  wave_wrapper.classList.toggle("dark-wave-wrapper-2")
+  wave_wrapper2.classList.toggle("dark-wave-wrapper")
+  wavy_banner.classList.toggle("wavy-banner-dark")
+  banner_content.classList.toggle("banner-content-light")
+  dark_light_switch.classList.toggle("dark-light-switch-alt")
 }
