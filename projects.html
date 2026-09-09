@@ -2,7 +2,6 @@
 <html>
     <head>
         <script src="js/script.js" defer></script>
-
         <link rel="stylesheet" href="css/styles.css">
 
         <style>
@@ -27,14 +26,20 @@
             
         </table>
         
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="journal.html">Weekly Journal</a></li>
-                <li><a href="ai-log.html">AI Engineering Log</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About Me</a></li>
-            </ul>
-        </nav>
+        <div>
+            <nav>
+                <div class="nav-link-container" id="nav-link-container">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="journal.html">Weekly Journal</a></li>
+                        <li><a href="ai-log.html">AI Engineering Log</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="about.html">About Me</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <button class = "dark-light-switch" id="dark-light-switch" onclick="toggleDarkMode()"  >
+        </button>
     </body>
 </html>

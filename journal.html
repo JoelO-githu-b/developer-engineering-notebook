@@ -1,51 +1,95 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <script src="js/script.js" defer></script>
+        <script src="js/script.js" defer></script>
+        <script src="js/weekly-journal-js.js" defer></script>
 
         <link rel="stylesheet" href="css/styles.css">
 
         <style>
             table, th, td {
-                border:1px solid rgba(0, 0, 0, 0.2); border-radius: 4px; padding-left: 0.8%; padding-right: 0.8%
+                border:1px solid rgba(0, 0, 0, 0.2); border-radius: 4px; 
+                
+                
+
+            }
+            th {
+                background-image: linear-gradient(#1e1e1e, #424242);
+            }
+            td {
+                background-image: linear-gradient(#424242, #1e1e1e);
             }
             table {
-                border:5px solid black;
+                border:5px solid white;
+            }
+            th.dark-mode {
+                background-image: linear-gradient(#1e1e1e, #424242);
+            }
+            td.dark-mode {
+                background-image: linear-gradient(#424242, #1e1e1e);
+            }
+            table.dark-mode {
+                border:5px solid white;
+            }
+            body {
+                margin: 0;
+                max-width: 100%;
+                max-height: 100%;
+                overflow-x: hidden;
+                overflow-y: hidden;
             }
         </style>  
     </head>
 
 
     <body>
-        <div class="custom-cursor"></div>
-
-        <h1>Weekly Journal Log</h1>
-        <table style="width:100%">
-            <tr> <!--Week Headers-->
-                <th>Week of</th>
-                <th>Goals</th>
-                <th>Accomplishments</th>
-                <th>What I Learned</th>
-                <th>Goals for Next Week</th>
-            </tr>
-            <tr>
-                <th>8/17/2026</th>
-                <td>Redesign my homepage with the help of AI</td>
-                <td>
-                    I was, in fact, able to redesign the homepage with the help of AI. Primarily adding a background, banner, and elements that resize based on how much the user has scrolled on the page.
-                </td>
-                <td>I learned that HTML is a class-based system despite, on the surface, not appearing that way. I certainly learned a ton this week, and how nested elements will inherit their parent's properties, in addition to other fundamentals of HTML, CSS, and JS.</td>
-                <td>Unsure what next week has to offer at the moment, but I know that I have the basic fundamentals of these programming languages down for whatever is next.</td>
-            </tr>
-        </table>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="journal.html">Weekly Journal</a></li>
-                <li><a href="ai-log.html">AI Engineering Log</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About Me</a></li>
-            </ul>
-        </nav>
+        
+        <div class="parallax-container">
+            <div class="parallax-bg" id="parallaxImage"></div>
+            <div class="parallax-content">
+                <div class="custom-cursor"></div>
+                <div class="wavy-banner" id = "wavy-banner" style="bottom:75px;">
+                    <div class="banner-content" id = "banner-content" style="justify-content:unset; left:2%; align-items: unset; top: 80px;">
+                        <h1>Weekly Journal Log</h1>
+                    </div>
+                    <div class="wave-wrapper-2"  id ="wave-wrapper-2"></div>
+                    <div class="wave-wrapper" id ="wave-wrapper"></div>
+                </div>
+                <table style="width:100%">
+                    <tr> <!--Week Headers-->
+                        <th>Week of</th>
+                        <th>Goals</th>
+                        <th>Accomplishments</th>
+                        <th>What I Learned</th>
+                        <th>Goals for Next Week</th>
+                    </tr>
+                    <tr>
+                        <th>8/17 <br> 2026</th>
+                        <td>Redesign my homepage with the help of AI</td>
+                        <td>
+                            I was, in fact, able to redesign the homepage with the help of AI. Primarily adding a background, banner, and elements that resize based on how much the user has scrolled on the page.
+                        </td>
+                        <td>I learned that HTML is a class-based system despite, on the surface, not appearing that way. I certainly learned a ton this week, and how nested elements will inherit their parent's properties, in addition to other fundamentals of HTML, CSS, and JS.</td>
+                        <td>Unsure what next week has to offer at the moment, but I know that I have the basic fundamentals of these programming languages down for whatever is next.</td>
+                    </tr>
+                </table>
+                <div>
+                    <nav>
+                        <div class="nav-link-container" id="nav-link-container">
+                            <ul class="nav-links">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="journal.html">Weekly Journal</a></li>
+                                <li><a href="ai-log.html">AI Engineering Log</a></li>
+                                <li><a href="projects.html">Projects</a></li>
+                                <li><a href="about.html">About Me</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <button class = "dark-light-switch" id="dark-light-switch" onclick="toggleDarkMode()"  >
+                </button>
+            </div>
+        </div>
+            
     </body>
 </html>
