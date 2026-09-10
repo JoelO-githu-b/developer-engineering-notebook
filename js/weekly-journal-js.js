@@ -19,7 +19,7 @@ function toggleDarkMode(dontFlip) {
   parallax.classList.toggle("light-parallax-bg");
   navlinkcontainer.classList.toggle("nav-link-container-light");
   dark_light_switch.classList.toggle("dark-light-switch-alt")
-wave_wrapper.classList.toggle("dark-wave-wrapper-2")
+  wave_wrapper.classList.toggle("dark-wave-wrapper-2")
   wave_wrapper2.classList.toggle("dark-wave-wrapper")
   wavy_banner.classList.toggle("wavy-banner-dark")
   banner_content.classList.toggle("banner-content-light")

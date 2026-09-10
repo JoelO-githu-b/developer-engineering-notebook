@@ -2,6 +2,7 @@
 <html>
     <head>
         <script src="js/script.js" defer></script>
+        <script src="js/projects.js" defer></script>
         <script src="js/weekly-journal-js.js" defer></script>
 
         <link rel="stylesheet" href="css/styles.css">
@@ -13,8 +14,172 @@
                 max-width: 100%;
                 max-height: 100%;
                 overflow-x: hidden;
-                overflow-y: hidden;
             }
+            /* Container holding the cards */
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Base Card Layout & Shifting Transitions */
+.project-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  
+  /* Smoothly shift card dimensions, opacity, and positioning when filtered */
+  opacity: 1;
+  max-height: 500px; /* High enough boundary value to fit expanded states */
+  transform: translateY(0);
+  margin-top: 0;
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.4s ease,
+    max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    margin 0.4s ease,
+    box-shadow 0.2s ease;
+}
+
+/* This utility class gets dynamically applied to hidden cards */
+.project-card.is-hidden {
+  opacity: 0;
+  max-height: 0 !important;   /* Force collapses the card footprint */
+  margin-top: -16px;          /* Counters the grid/flex layout spacing */
+  padding: 0 !important;
+  border: 0 solid transparent;
+  transform: translateY(20px); /* Gives a sinking effect when disappearing */
+  pointer-events: none;       /* Disable clicks on invisible nodes */
+}
+
+/* Filter Bar Buttons Styling */
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.filter-btn {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+/* (Internal Expansion Code from Previous Step) */
+.card-header { display: flex; align-items: center; padding: 16px; gap: 16px; }
+.image-wrapper img { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; }
+.text-wrapper { flex-grow: 1; text-align: center; }
+.text-wrapper h3, .text-wrapper p { margin: 0; }
+.card-details-wrapper { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.3s ease; }
+.project-card.is-expanded .card-details-wrapper { grid-template-rows: 1fr; }
+.card-details { overflow: hidden; }
+.deep-dive-content { padding: 0 20px 20px 20px; border-top: 1px solid #f0f0f0; }
+.tech-tags { display: flex; gap: 8px; list-style: none; padding: 0; margin-top: 12px; }
+.tech-tags li { background: #f0f0f0; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; }
+
+            /* Card Container Layout */
+.project-card {
+  background: #ffffff;
+  border: 5px solid black;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  margin: 16px auto;
+  overflow: hidden;
+  cursor: pointer;
+  color: black;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Header Layout: Image Left, Centered Text Right */
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+}
+
+.image-wrapper img {
+  height: 180px;
+  border-radius: 8px;
+  display: block;
+}
+
+.text-wrapper {
+  flex-grow: 1;
+  text-align: center; /* Centers your project labels text horizontally */
+}
+
+.text-wrapper h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.25rem;
+}
+
+.text-wrapper p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* The Core CSS Expansion Trick */
+.card-details-wrapper {
+  display: grid;
+  grid-template-rows: 0fr; /* Starts perfectly collapsed */
+  transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* This is the class JavaScript toggles on click */
+.project-card.is-expanded .card-details-wrapper {
+  grid-template-rows: 1fr; /* Animates smoothly to fit the content size */
+}
+
+/* The hidden content wrap */
+.card-details {
+  overflow: hidden;
+}
+
+/* Padding goes here so it doesn't break the 0fr height calculation */
+.deep-dive-content {
+  padding: 0 20px 20px 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Dummy placeholder styling for content you want to build on */
+.tech-tags {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+.tech-tags li {
+  background: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
         </style>  
     </head>
     <body>
@@ -29,7 +194,7 @@
                                 <h1>Projects</h1>
                             </div>
                             <div style="width: 500px;">
-                                <h3><i>Where the magic happens baby.</i></h3>
+                                <h3><i>Where the magic happens baby.<br>(Click on the cards in order to see their details!)</i></h3>
                             </div>
                         </div>
                     </div>
@@ -37,17 +202,121 @@
                     <div class="wave-wrapper-2"  id ="wave-wrapper-2"></div>
                     <div class="wave-wrapper" id ="wave-wrapper"></div>
                 </div>
-                <table style="width:100%">
-                    <tr style="height:100px"> <!--Copy this block of code to make a new project-->
-                        <td><img src="wtfoatmeal.jpg" style="max-width:200px"></td>
-                        <th>
-                            <a href="projects/sample-project.html"><h1>Sample Project</h1></a>
-                            <h3>Description here</h3>
-                        </th>
-                    </tr>
-                    
-                    
-                </table>
+               
+                <!-- 1. Filter Category Buttons -->
+<div class="filter-controls">
+  <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+  <button class="filter-btn" onclick="filterProjects('React', this)">React</button>
+  <button class="filter-btn" onclick="filterProjects('Node.js', this)">Node.js</button>
+  <button class="filter-btn" onclick="filterProjects('Python', this)">Python</button>
+</div>
+
+<!-- 2. Grid Container for Projects -->
+<div class="projects-container">
+  
+  <!-- Card 1: React & Node -->
+  <div class="project-card" data-tags="React,Node.js" onclick="toggleCard(event, this)">
+    <div class="card-header">
+      <div class="image-wrapper"><img src="https://placeholder.com" alt="Thumb"></div>
+      <div class="text-wrapper">
+        <h3>Project Alpha</h3>
+        <p>FlavorDescriptionPlaceholder</p>
+      </div>
+    </div>
+    <div class="card-details-wrapper">
+      <div class="card-details">
+        <div class="deep-dive-content">
+          <h4>Detailed Project Overview</h4>
+          <p>This is your expandable zone for Project Alpha.</p>
+          <ul class="tech-tags"><li>React</li><li>Node.js</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2: Python -->
+  <div class="project-card" data-tags="Python" onclick="toggleCard(event, this)">
+    <div class="card-header">
+      <div class="image-wrapper"><img src="https://placeholder.com" alt="Thumb"></div>
+      <div class="text-wrapper">
+        <h3>Project Beta</h3>
+        <p>FlavorDescriptionPlaceholder</p>
+      </div>
+    </div>
+    <div class="card-details-wrapper">
+      <div class="card-details">
+        <div class="deep-dive-content">
+          <h4>Detailed Project Overview</h4>
+          <p>This is your expandable zone for Project Beta.</p>
+          <ul class="tech-tags"><li>Python</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+                
+                <div class="project-card" onclick="toggleCard(this)">
+                    <!-- 1. The Collapsed Header View -->
+                    <div class="card-header">
+                        <div class="image-wrapper">
+                        <img src="wtfoatmeal.jpg" alt="Project Thumbnail">
+                        </div>
+                            <div class="text-wrapper">
+                            <h1>Joel's Web Developer Portfolio</h1>
+                            <h4>This is my very """professional""" web portfolio.</h4>
+                        </div>
+                    </div>
+
+                    <!-- 2. The Expandable Hidden Container -->
+                    <div class="card-details-wrapper">
+                        <div class="card-details">
+                        <div class="deep-dive-content">
+                            <h4>More Info:</h4>
+                            <h4>This website was created for a class project, but was also created to be a professional, personal portfolio to display my creations and skills properly.</h4>
+                            <h4>It will continue to see further development as my 2026 school year progresses, and may serve me well past that too.</h4>
+                            <h4>On one hand, I'm sorry for semi-vibecoding this website. I am adept in my skills as a programmer enough that, with some learning, I could've done this on my own. <i>Buuut, if I'm forced to use AI to get it done quicker... I'm gonna use it to get it done quicker ;)</i></h4>
+                            
+                            <ul class="tech-tags">
+                                <li><h3>HTML</h3></li>
+                                <li><h3>CSS</h3></li>
+                                <li><h3>JavaScript</h3></li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="toggleCard(this)">
+                    <!-- 1. The Collapsed Header View -->
+                    <div class="card-header">
+                        <div class="image-wrapper">
+                        <img src="wtfoatmeal.jpg" alt="Project Thumbnail">
+                        </div>
+                        <div class="text-wrapper">
+                        <h1>Sample  Project</h1>
+                        <h4>Sample project</h4>
+                        </div>
+                    </div>
+
+                    <!-- 2. The Expandable Hidden Container -->
+                    <div class="card-details-wrapper">
+                        <div class="card-details">
+                        <div class="deep-dive-content">
+                            <h4>Detailed Project Overview</h4>
+                            <p>This is your expandable zone. You can easily add any HTML content inside this container, such as tech stacks, team members, metrics, or links:</p>
+                            
+                            <!-- Add your extra custom structures below -->
+                            <ul class="tech-tags">
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>CSS Grid</li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <div>
                     <nav>
