@@ -2,44 +2,73 @@
 <html>
     <head>
         <script src="js/script.js" defer></script>
+        <script src="js/weekly-journal-js.js" defer></script>
+
         <link rel="stylesheet" href="css/styles.css">
 
         <style>
             table {
                 border:5px solid black; padding-left: 0.8%; padding-right: 0.8%
             }
+            body {
+                margin: 0;
+                max-width: 100%;
+                max-height: 100%;
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
         </style>  
     </head>
-
     <body>
-        <div class="custom-cursor"></div>
-
-        <h1>Projects</h1>
-        <table style="width:100%">
-            <tr> <!--Copy this block of code to make a new project-->
-                <td style="width:1%"><img src="wtfoatmeal.jpg", width="200px", height="200px"></td>
-                <th>
-                    <a href="projects/sample-project.html"><h1>Sample Project</h1></a>
-                    <h3>Description here</h3>
-                </th>
-            </tr>
-            
-        </table>
-        
-        <div>
-            <nav>
-                <div class="nav-link-container" id="nav-link-container">
-                    <ul class="nav-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="journal.html">Weekly Journal</a></li>
-                        <li><a href="ai-log.html">AI Engineering Log</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="about.html">About Me</a></li>
-                    </ul>
+        <div class="parallax-container">
+            <div class="parallax-bg" id="parallaxImage"></div>
+            <div class="parallax-content">
+                <div class="custom-cursor"></div>
+                <div class="wavy-banner" id = "wavy-banner" style="bottom:75px;">
+                    <div class="banner-content" id = "banner-content" style="justify-content: unset; left:2%; align-items: unset; top: 80px;">
+                        <div class="journal-header">
+                            <div>
+                                <h1>Projects</h1>
+                            </div>
+                            <div style="width: 500px;">
+                                <h3><i>Where the magic happens baby.</i></h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="wave-wrapper-2"  id ="wave-wrapper-2"></div>
+                    <div class="wave-wrapper" id ="wave-wrapper"></div>
                 </div>
-            </nav>
+                <table style="width:100%">
+                    <tr> <!--Copy this block of code to make a new project-->
+                        <td style="width:1%"><img src="wtfoatmeal.jpg", width="200px", height="200px"></td>
+                        <th>
+                            <a href="projects/sample-project.html"><h1>Sample Project</h1></a>
+                            <h3>Description here</h3>
+                        </th>
+                    </tr>
+                    
+                </table>
+                
+                <div>
+                    <nav>
+                        <div class="nav-link-container" id="nav-link-container">
+                            <ul class="nav-links">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="journal.html">Weekly Journal</a></li>
+                                <li><a href="ai-log.html">AI Engineering Log</a></li>
+                                <li><a href="projects.html">Projects</a></li>
+                                <li><a href="skills.html">Skills</a></li>
+                                <li><a href="about.html">About Me</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <button class = "dark-light-switch" id="dark-light-switch" onclick="toggleDarkMode()"  >
+                </button>
+            </div>
+            
         </div>
-        <button class = "dark-light-switch" id="dark-light-switch" onclick="toggleDarkMode()"  >
-        </button>
+       
     </body>
 </html>

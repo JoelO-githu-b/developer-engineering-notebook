@@ -2,43 +2,87 @@ const cursor = document.querySelector('.custom-cursor');
 let lastTime = performance.now();
 const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
 
-let pageX = -500
-let pageY = 0
+let maxW = window.innerWidth;
+let maxH = window.innerHeight;
+window.addEventListener('resize', () => {
+  maxW = window.innerWidth;
+  maxH = window.innerHeight;
+});
 
-let lerpX = 0
-let lerpY = 0
-let sizeLerpX = 0; let sizeLerpY = 0;
+let clientX = -500;
+let clientY = 0;
 
-let firstFrame = false
+let lerpX = 0;
+let lerpY = 0;
+let sizeLerpX = 0; 
+let sizeLerpY = 0;
+
+let firstFrame = false;
+let isOffScreen = false;
 
 function update(currentTime) {
   let deltaTime = (currentTime - lastTime) / 1000;
 
-  lerpX = lerp(lerpX, pageX, deltaTime * 15.0);
-  lerpY = lerp(lerpY, pageY, deltaTime * 15.0);
-  cursor.style.left = lerpX + 'px'
-  cursor.style.top = lerpY + 'px'
+  const radiusX = firstFrame ? sizeLerpX / 2 : 16;
+  const radiusY = firstFrame ? sizeLerpY / 2 : 16;
+
+  let targetX = clientX;
+  let targetY = clientY;
+
+  if (!isOffScreen) {
+    targetX = Math.max(radiusX, Math.min(maxW - radiusX, clientX));
+    targetY = Math.max(radiusY, Math.min(maxH - radiusY, clientY));
+  }
+
+  lerpX = lerp(lerpX, targetX, deltaTime * 15.0);
+  lerpY = lerp(lerpY, targetY, deltaTime * 15.0);
+
+  cursor.style.left = (lerpX) + 'px';
+  cursor.style.top = (lerpY) + 'px';
 
   if (firstFrame) {
-    sizeLerpX = lerp(sizeLerpX, 32, deltaTime * 6.0);
-      sizeLerpY = lerp(sizeLerpY, 32, deltaTime * 6.0);
+    sizeLerpX = lerp(sizeLerpX, 32, deltaTime * 12.0);
+    sizeLerpY = lerp(sizeLerpY, 32, deltaTime * 12.0);
 
-      cursor.style.width = sizeLerpX + 'px'
-      cursor.style.height = sizeLerpY + 'px'
+    cursor.style.width = sizeLerpX + 'px';
+    cursor.style.height = sizeLerpY + 'px';
   }
   
-  
-  lastTime = currentTime
-
-  self.requestAnimationFrame(update)
+  lastTime = currentTime;
+  self.requestAnimationFrame(update);
 }
+
 document.addEventListener('mousemove', (e) => {
+  isOffScreen = false;
+
   if (!firstFrame) {
-    lerpX = e.pageX
-    lerpY = e.pageY
-    firstFrame = true
+    lerpX = e.clientX;
+    lerpY = e.clientY;
+    firstFrame = true;
   }
-    pageX = e.pageX
-    pageY = e.pageY
+  clientX = e.clientX;
+  clientY = e.clientY;
+});
+
+document.addEventListener('mouseleave', () => {
+  isOffScreen = true;
+});
+// 3. Listen for hover events globally using Event Delegation
+document.addEventListener('mouseover', (e) => {
+  // Check if hovering over a link or an element inside a link
+  const link = e.target.closest('a'); 
+  if (link) {
+    targetWidth = 56;       // Grow bigger on links
+    targetHeight = 56;      
+    cursor.classList.add('is-hovering'); // Add a class for visual/CSS changes
+  }
+});
+document.addEventListener('mouseout', (e) => {
+  const link = e.target.closest('a');
+  if (link) {
+    targetWidth = 32;       // Reset to default size
+    targetHeight = 32;      
+    cursor.classList.remove('is-hovering');
+  }
 });
 self.requestAnimationFrame(update);

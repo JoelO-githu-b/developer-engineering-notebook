@@ -3,6 +3,7 @@
 
 <head>
     <script src="js/script.js" defer></script>
+    <script src="js/about-me.js" defer></script>
 
     <link rel="stylesheet" href="css/styles.css">
     <style>
@@ -10,6 +11,13 @@
             width: 100%;
             max-width: 500;
         }
+        body {
+                margin: 0;
+                height: 0;
+                max-width: 100%;
+                max-height: 100%;
+                overflow-x: hidden;
+            }
         p {
             font-size: 18px;
         }
@@ -17,46 +25,67 @@
 </head>
 
 <body>
-    <div class="custom-cursor"></div>
-    
-    <div style="display: flex; flex-direction: column; gap: 1px; line-height: 19px;">
-        <h1>Who am I?</h1>
-        <div>
-            <p>Hi, I'm <b>Joel Otero</b>, and I'm in the 12th grade.</p>
-            <p>I'm an expert in the Lua programming language and moderately decent at computer language in general. I've been doing this for 8 years.</p>
-        </div>
-        <div>
-            <h2>Why do I want to do Software Development?</h2>
-            <p>I wanted to do Software Development because my friends are in this class, and it's the most amount of fun I could find in a class here at school (I love making things).</p>
+    <div class="parallax-container">
+            <div class="parallax-bg" id="parallaxImage"></div>
+            <div class="parallax-content">
+                <div class="custom-cursor"></div>
+                <div style="display: flex; flex-direction: column; gap: 1px; line-height: 19px;">
+                    
+                    <div class="wavy-banner" id = "wavy-banner" style="bottom:75px;">
+                        <div class="banner-content" id = "banner-content" style="justify-content: unset; left:2%; align-items: unset; top: 80px;">
+                            <div class="journal-header">
 
-        </div>
-        <div>
-            <h2>Goals?</h2>
-            <p>My goals for this semester are:</p>
-            <ul>
-                <li>I want to actually learn how to get a bit better at HTML and website creation</li>
-                <li>Learn about the actual creation of software.</li>
-                <li>Make an actual game! I heard that was a thing we get to do second semester, right?</li>
-            </ul>
-        </div>
-    </div>
-    
-    
-    <div>
-        <nav>
-            <div class="nav-link-container" id="nav-link-container">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="journal.html">Weekly Journal</a></li>
-                    <li><a href="ai-log.html">AI Engineering Log</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="about.html">About Me</a></li>
-                </ul>
+                                <h1>About Me</h1>
+                                <h3 style="margin-right:5%;"><i>"I think, therefore I am" ~Thomas Jefferson. Definitely. I am 100% positive it was <br> him who said that.</i></h3>
+
+                            </div>
+                        </div>
+                        
+                        <div class="wave-wrapper-2"  id ="wave-wrapper-2"></div>
+                        <div class="wave-wrapper" id ="wave-wrapper"></div>
+                    </div>
+                    <div class="expand-container-static" id="expand-container-static" style="width:81%;">
+                        <h2>Who are you?</h2>
+                            
+                        <h3>Hi, I'm <b>Joel Otero</b>, and I'm in the 12th grade.</h3>
+                        <h3>I'm an expert in the Lua programming language and moderately decent at computer language in general. I've been doing this for 8 years.</h3>
+                    </div>
+                    <div class="expand-container-static" id="expand-container-static-2" style="width:81%;">
+                        <h2>Why do I want to do Software Development?</h2>
+                        <h3>I wanted to do Software Development because my friends are in this class, and it's the most amount of fun I could find in a class here at school (I love making things).</h3>
+                    </div>
+                    <div class="expand-container-static" id="expand-container-static-3" style="width:81%;">
+                        <h2>Goals?</h2>
+                        <h3>My goals for this semester are:</h3>
+                        <ul>
+                            <li><h4>I want to actually learn how to get a bit better at HTML and website creation</h4></li>
+                            <li><h4>Learn about the actual creation of software.</h4></li>
+                            <li><h4>Make an actual game! I heard that was a thing we get to do second semester, right?</h4></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                
+                <div>
+                    <nav>
+                        <div class="nav-link-container" id="nav-link-container">
+                            <ul class="nav-links">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="journal.html">Weekly Journal</a></li>
+                                <li><a href="ai-log.html">AI Engineering Log</a></li>
+                                <li><a href="projects.html">Projects</a></li>
+                                <li><a href="skills.html">Skills</a></li>
+                                <li><a href="about.html">About Me</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <button class = "dark-light-switch" id="dark-light-switch" onclick="toggleDarkMode()"  >
+                </button>
             </div>
-        </nav>
-    </div>
-    <button class = "dark-light-switch" id="dark-light-switch" onclick="toggleDarkMode()"  >
-    </button>
+            
+        </div>
+   
 </body>
 
 

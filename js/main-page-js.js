@@ -11,26 +11,33 @@ const pleadful2 = document.getElementById("pleadful-2");
 const pleadful3 = document.getElementById("pleadful-3");
 const dark_light_switch = document.getElementById("dark-light-switch")
 const navlinkcontainer = document.getElementById("nav-link-container")
+const splash_text = document.getElementById("splash-text")
+const scrolltotop = document.getElementById("scroll-to-top")
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 const currentTheme = localStorage.getItem('theme');
+const splashText = [
+  "Like a bunch of space monkeys fighting underwater.",
+  "You're never gonna guess what 9 + 10 equals.",
+  "Do you like waffles?",
+  "This is as professional as it gets for me on my website.",
+  "What a crappy website. You guys should check out this obscure one called https://youtube.com/.",
+  "What do you mean it costs like $10/mo for a domain!?"
+]
+// &quot;
 
 if (currentTheme === 'dark') {
   toggleDarkMode(true)
 }
+let max = splashText.length - 1
+let min = 0
+let randomSplash = splashText[Math.floor(Math.random() * (max - min + 1)) + min]
+splash_text.textContent = '"' + randomSplash + '"'
 
 document.addEventListener('scroll', function() {
     let scrollPosition = window.pageYOffset;
     
-    /* 
-    Multiply by a decimal to control the speed.
-    0.5 = Background moves at half-speed.
-    0.2 = Background moves very slowly.
-    */
     parallax.style.transform = "translateY(" + (scrollPosition * 0.5) + "px)";
-    // 3. Get the current vertical scroll position
     const scrollValue = window.scrollY;
-
-    // 4. Calculate the new size (Base size of 100px + scroll amount)
 
     expandContainer.style.width = 0.1 * 800 + '%';
     expandContainer2.style.width = 0.1 * clamp(scrollValue * 1.25, 0, 700) + '%';
@@ -39,9 +46,12 @@ document.addEventListener('scroll', function() {
     let scrollAdjust = (scrollValue * 0.04)
     pleadful.style.transform = "rotate(" + scrollAdjust + "deg) translateX(" + (-45 + scrollValue * 0.5) +"px)";
     pleadful2.style.transform = "rotate(" + clamp(scrollAdjust - 24, -50, 0) + "deg) translateX(" + clamp((-245 + scrollValue * 0.5), -700, 45) +"px)";
-    pleadful3.style.transform = "rotate(" + clamp(scrollAdjust - 42, 0, 50) + "deg) translateX(" + clamp((-490 + scrollValue * 0.5), -700, 45) +"px)";
+    pleadful3.style.transform = "rotate(" + clamp(49 - scrollAdjust, 0, 50) + "deg) translateX(" + clamp((575 - scrollValue * 0.5), -50, 700) +"px)";
 
 });
+scrolltotop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+})
 function toggleDarkMode(dontFlip) {
   parallax.classList.toggle("light-parallax-bg");
   expandContainer.classList.toggle("light-expand-container");
