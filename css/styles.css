@@ -317,8 +317,33 @@ p {
     font-size: 18px;
 }
 
+/*tbl stuff*/
+table, th, td {
+    border:1px solid rgba(0, 0, 0, 0.2); border-radius: 4px; 
+}
+th {
+    background-color: #1E1E1E;
 
+}
+td {
+    background-color: #1E1E1E;
 
+}
+table {
+    border:5px solid white;
+}
+.table-cell-dark-mode {
+    background-color: white;
+    color:black;
+}
+.table-header-dark-mode {
+    background-color: white;
+    color:black;
+
+}
+.table-dark-mode {
+    border:5px solid black ;
+}
 /* Container holding the parallax area */
 .parallax-container {
     z-index: -1;
@@ -350,8 +375,8 @@ p {
 }
 
 .text-content {
-    flex: 1; /* grows and shrinks to fill space */
-    min-width: 0; /* prevents text overflow bugs */
+    flex: 1; 
+    min-width: 0; 
 }
 
 .fixed-image {
