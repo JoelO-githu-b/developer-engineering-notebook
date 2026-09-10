@@ -14,8 +14,14 @@ const all_cells = document.querySelectorAll('td');
 if (currentTheme === 'dark') {
   toggleDarkMode(true)
 }
+document.addEventListener('scroll', function() {
+    let scrollPosition = window.pageYOffset;
+    
+    parallax.style.transform = "translateY(" + (scrollPosition * 0.5) + "px)";
+})
 
 function toggleDarkMode(dontFlip) {
+  
   parallax.classList.toggle("light-parallax-bg");
   navlinkcontainer.classList.toggle("nav-link-container-light");
   dark_light_switch.classList.toggle("dark-light-switch-alt")

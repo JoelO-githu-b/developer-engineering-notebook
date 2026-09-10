@@ -13,6 +13,11 @@ const currentTheme = localStorage.getItem('theme');
 if (currentTheme === 'dark') {
   toggleDarkMode(true)
 }
+document.addEventListener('scroll', function() {
+    let scrollPosition = window.pageYOffset;
+    
+    parallax.style.transform = "translateY(" + (scrollPosition * 0.5) + "px)";
+})
 
 function toggleDarkMode(dontFlip) {
   parallax.classList.toggle("light-parallax-bg");
