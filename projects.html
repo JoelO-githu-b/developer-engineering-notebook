@@ -17,16 +17,20 @@
 			}
 					
 			.projects-container {
+				cursor: none;
 				display: flex;
 				flex-direction: column;
 				gap: 16px;
 				max-width: 900px;
 				margin: 0 auto;
-width: 100%; /* Ensures the container fills up to its max-width */
+				width: 100%; /* Ensures the container fills up to its max-width */
+			}
+			.projects-container-light {
+				gap:45px;
 			}
 
 			.project-card {
-
+				cursor: none;
 				background: #1e1e1e;
 				color: white;
 				border: 5px solid white;
@@ -58,6 +62,11 @@ width: 100%; /* Ensures the container fills up to its max-width */
 				pointer-events: none;
 			}
 
+			.project-card.light-mode {
+				background: white;
+				color: #1e1e1e;
+			}
+
 			.filter-controls {
 				display: flex;
 				justify-content: center;
@@ -65,18 +74,25 @@ width: 100%; /* Ensures the container fills up to its max-width */
 				margin-bottom: 24px;
 			}
 			.filter-btn {
+				color: #fff;
 				padding: 8px 16px;
-				border: 1px solid #ccc;
-				background: #fff;
+				border: 5px solid #fff;
+				background: #1e1e1e;
 				border-radius: 20px;
 				cursor: pointer;
 				font-weight: 500;
 				transition: all 0.2s ease;
 			}
+			.filter-btn.light-mode {
+				color:#000;
+				border: 5px solid #fff;
+				background: #fff;
+			}
 			.filter-btn.active, .filter-btn:hover {
 				background: #007bff;
 				color: #fff;
 				border-color: #007bff;
+				
 			}
 
 			.card-header { display: flex; align-items: center; padding: 16px; gap: 16px; }
@@ -88,7 +104,8 @@ width: 100%; /* Ensures the container fills up to its max-width */
 			.card-details { overflow: hidden; }
 			.deep-dive-content { padding: 0 20px 20px 20px; border-top: 1px solid #f0f0f0; }
 			.tech-tags { display: flex;  gap: 8px; list-style: none; padding: 0; margin-top: 12px; }
-			.tech-tags li { background: #1e1e1e; border-color: white; border-width: 5px;  padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; }
+			.tech-tags li { background: #FFF; color: #000; border-color: white; border-width: 5px;  padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; }
+			.tech-tags li.light-mode { background: #1e1e1e; color: #FFF; border-color: black; border-width: 5px;  padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; }
 
 		</style>  
 	</head>
@@ -141,8 +158,6 @@ width: 100%; /* Ensures the container fills up to its max-width */
 							</div>
 						</div>
 					</div>
-
-					<div class="projects-container">
 					<div class="project-card" data-tags="HTML" onclick="toggleCard(event, this)">
 						<div class="card-header">
 							<div class="image-wrapper"><img src="images/smug.png" alt="Thumb"></div>
