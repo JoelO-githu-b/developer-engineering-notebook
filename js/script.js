@@ -11,6 +11,7 @@ window.addEventListener('resize', () => {
 
 let clientX = -500;
 let clientY = 0;
+let clickOffsetY = 0
 
 let lerpX = 0;
 let lerpY = 0;
@@ -34,11 +35,11 @@ function update(currentTime) {
     targetY = Math.max(radiusY, Math.min(maxH - radiusY, clientY));
   }
 
-  lerpX = lerp(lerpX, targetX, deltaTime * 15.0);
-  lerpY = lerp(lerpY, targetY, deltaTime * 15.0);
+  lerpX = lerp(lerpX, targetX, 1.0);
+  lerpY = lerp(lerpY, targetY, 1.0);
 
   cursor.style.left = (lerpX) + 'px';
-  cursor.style.top = (lerpY) + 'px';
+  cursor.style.top = (lerpY + clickOffsetY) + 'px';
 
   if (firstFrame) {
     sizeLerpX = lerp(sizeLerpX, 32, deltaTime * 12.0);
@@ -63,24 +64,29 @@ document.addEventListener('mousemove', (e) => {
   clientX = e.clientX;
   clientY = e.clientY;
 });
-
+document.addEventListener('mousedown', () => {
+  clickOffsetY = 2;
+})
+document.addEventListener('mouseup', () => {
+  clickOffsetY = 0;
+  
+})
 document.addEventListener('mouseleave', () => {
   isOffScreen = true;
 });
-// 3. Listen for hover events globally using Event Delegation
 document.addEventListener('mouseover', (e) => {
-  // Check if hovering over a link or an element inside a link
-  const link = e.target.closest('a'); 
+  const link = e.target.closest('a, .projects-container, .dark-light-switch, .filter-btn'); 
+  
   if (link) {
-    targetWidth = 56;       // Grow bigger on links
+    targetWidth = 56;
     targetHeight = 56;      
-    cursor.classList.add('is-hovering'); // Add a class for visual/CSS changes
+    cursor.classList.add('is-hovering'); 
   }
 });
 document.addEventListener('mouseout', (e) => {
-  const link = e.target.closest('a');
+  const link = e.target.closest('a, .projects-container, .dark-light-switch, .filter-btn');
   if (link) {
-    targetWidth = 32;       // Reset to default size
+    targetWidth = 32;     
     targetHeight = 32;      
     cursor.classList.remove('is-hovering');
   }

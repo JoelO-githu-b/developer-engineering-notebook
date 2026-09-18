@@ -6,16 +6,26 @@ const wave_wrapper2 = document.getElementById("wave-wrapper-2");
 const wavy_banner = document.getElementById("wavy-banner");
 const banner_content = document.getElementById("banner-content");
 const tbl = document.getElementById("tbl")
-const currentTheme = localStorage.getItem('theme');
+var currentTheme = localStorage.getItem('theme');
 const all_tables = document.querySelectorAll('table');
 const all_rows = document.querySelectorAll('tr');
 const all_headers = document.querySelectorAll('th');
 const all_cells = document.querySelectorAll('td');
+const cards = document.querySelectorAll('.project-card');
+const filter_btns = document.querySelectorAll('.filter-btn');
+const tech_tags = document.querySelectorAll('.tech-tags li');
+
 if (currentTheme === 'dark') {
   toggleDarkMode(true)
 }
+document.addEventListener('scroll', function() {
+    let scrollPosition = window.pageYOffset;
+    
+    parallax.style.transform = "translateY(" + (scrollPosition * 0.5) + "px)";
+})
 
 function toggleDarkMode(dontFlip) {
+  
   parallax.classList.toggle("light-parallax-bg");
   navlinkcontainer.classList.toggle("nav-link-container-light");
   dark_light_switch.classList.toggle("dark-light-switch-alt")
@@ -33,10 +43,30 @@ function toggleDarkMode(dontFlip) {
   all_cells.forEach(table => {
       table.classList.toggle('table-cell-dark-mode')
   });
+
   if (dontFlip) return;
   if (currentTheme === "dark") {
     localStorage.setItem('theme', 'light');
+    cards.forEach(card => {
+      card.classList.remove('light-mode');
+    });
+    filter_btns.forEach(btn => {
+      btn.classList.remove('light-mode');
+    });
+    tech_tags.forEach(tag => {
+      tag.classList.remove('light-mode');
+    });
   } else {
+    cards.forEach(card => {
+        card.classList.add('light-mode');
+    });
+    filter_btns.forEach(btn => {
+      btn.classList.add('light-mode');
+    });
+    tech_tags.forEach(tag => {
+      tag.classList.add('light-mode');
+    });
     localStorage.setItem('theme', 'dark');
   }
+  currentTheme = localStorage.getItem('theme');
 }
